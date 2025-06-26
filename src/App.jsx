@@ -136,7 +136,23 @@ function App() {
           <div style={{ margin: '18px 0 8px 0', fontWeight: 600, color: '#7F7FD5', fontSize: 17, letterSpacing: 0.2 }}>Вопросы для самостоятельного размышления:</div>
           <ul className="card-questions" style={{ marginTop: 10, textAlign: "left", paddingLeft: 0, listStyle: "none" }}>
             {selectedCard.questions.map((q, i) => (
-              <li key={i} style={{ marginBottom: 10, background: "#f5f6fa", borderRadius: 8, padding: "8px 14px", color: "#333", fontSize: 16, boxShadow: "0 1px 4px #7F7FD511" }}>{q}</li>
+              <li key={i} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: 10, background: "#f5f6fa", borderRadius: 8, padding: "8px 14px", color: "#333", fontSize: 16, boxShadow: "0 1px 4px #7F7FD511" }}>
+                <span style={{
+                  minWidth: 28,
+                  height: 28,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '50%',
+                  background: '#edeaff',
+                  color: '#a18cd1',
+                  fontWeight: 700,
+                  fontSize: 16,
+                  marginRight: 12,
+                  marginTop: 1
+                }}>{i + 1}</span>
+                <span>{q}</span>
+              </li>
             ))}
           </ul>
           {/* Первый блок: шаги и мотивация */}
