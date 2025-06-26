@@ -1,6 +1,21 @@
 import React, { useState } from "react";
 import { cards } from "./cards";
 
+const cardBackSVG = (
+  <svg width="120" height="180" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="180" rx="16" fill="url(#paint0_linear)"/>
+    <defs>
+      <linearGradient id="paint0_linear" x1="0" y1="0" x2="120" y2="180" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#7F7FD5"/>
+        <stop offset="0.5" stopColor="#86A8E7"/>
+        <stop offset="1" stopColor="#91EAE4"/>
+      </linearGradient>
+    </defs>
+    <circle cx="60" cy="90" r="38" fill="#fff" fillOpacity="0.15"/>
+    <text x="60" y="100" textAnchor="middle" fontSize="32" fill="#fff" fontWeight="bold" fontFamily="Arial">?</text>
+  </svg>
+);
+
 function App() {
   const [step, setStep] = useState(1);
   const [input, setInput] = useState("");
@@ -26,11 +41,23 @@ function App() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "#f5f6fa" }}>
+    <div style={{
+      minHeight: "100vh",
+      minWidth: "100vw",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      background: "linear-gradient(135deg, #7F7FD5 0%, #86A8E7 50%, #91EAE4 100%)",
+      transition: "background 0.5s"
+    }}>
       {step === 1 && (
-        <div style={{ background: "#fff", padding: 32, borderRadius: 16, boxShadow: "0 2px 8px #e1e1e1", maxWidth: 400, width: "100%" }}>
-          <h2>Карта дня</h2>
-          <p>Сделайте вдох и выдох, расслабьтесь.<br/>Сформулируйте свой вопрос и введите число от 1 до 50.</p>
+        <div style={{ background: "rgba(255,255,255,0.85)", padding: 32, borderRadius: 24, boxShadow: "0 4px 24px #7F7FD533", maxWidth: 420, width: "100%", textAlign: "center", position: "relative" }}>
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
+            {cardBackSVG}
+          </div>
+          <h2 style={{ fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 28, color: '#4f4f4f' }}>Карта дня</h2>
+          <p style={{ color: '#555', fontSize: 17 }}>Сделайте вдох и выдох, расслабьтесь.<br/>Сформулируйте свой вопрос и введите число от 1 до 50.</p>
           <form onSubmit={handleSubmit} style={{ marginTop: 24 }}>
             <input
               type="number"
@@ -39,25 +66,44 @@ function App() {
               value={input}
               onChange={e => setInput(e.target.value)}
               placeholder="Ваше число"
-              style={{ padding: 8, fontSize: 16, width: "100%", borderRadius: 8, border: "1px solid #ccc" }}
+              style={{ padding: 10, fontSize: 18, width: "100%", borderRadius: 10, border: "1.5px solid #7F7FD5", outline: "none", marginBottom: 8, boxSizing: "border-box" }}
             />
-            {error && <div style={{ color: "red", marginTop: 8 }}>{error}</div>}
-            <button type="submit" style={{ marginTop: 16, padding: "10px 24px", fontSize: 16, borderRadius: 8, background: "#4f8cff", color: "#fff", border: "none", cursor: "pointer" }}>
+            {error && <div style={{ color: "#d7263d", marginTop: 8 }}>{error}</div>}
+            <button type="submit" style={{ marginTop: 16, padding: "12px 32px", fontSize: 18, borderRadius: 10, background: "linear-gradient(90deg, #7F7FD5, #86A8E7)", color: "#fff", border: "none", cursor: "pointer", fontWeight: 600, boxShadow: "0 2px 8px #7F7FD522" }}>
               Получить карту
             </button>
           </form>
         </div>
       )}
       {step === 2 && selectedCard && (
-        <div style={{ background: "#fff", padding: 32, borderRadius: 16, boxShadow: "0 2px 8px #e1e1e1", maxWidth: 400, width: "100%" }}>
-          <h2>{selectedCard.title}</h2>
-          <p style={{ fontStyle: "italic" }}>{selectedCard.description}</p>
-          <ul style={{ marginTop: 16 }}>
+        <div style={{ background: "rgba(255,255,255,0.95)", padding: 36, borderRadius: 28, boxShadow: "0 6px 32px #7F7FD544", maxWidth: 440, width: "100%", textAlign: "center", position: "relative", animation: "fadeIn 0.7s" }}>
+          <div style={{
+            margin: "0 auto 18px auto",
+            width: 120,
+            height: 180,
+            borderRadius: 16,
+            boxShadow: "0 4px 16px #7F7FD522",
+            background: "linear-gradient(135deg, #fff 60%, #e3eaff 100%)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: 44,
+            fontWeight: 700,
+            color: "#7F7FD5",
+            letterSpacing: 2,
+            fontFamily: 'Georgia, serif',
+            position: "relative"
+          }}>
+            <span style={{ fontSize: 44, fontWeight: 700, color: "#7F7FD5", fontFamily: 'Georgia, serif' }}>{selectedCard.number}</span>
+          </div>
+          <h2 style={{ fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 26, color: '#4f4f4f', marginTop: 12 }}>{selectedCard.title}</h2>
+          <p style={{ fontStyle: "italic", color: '#555', fontSize: 17, margin: '12px 0 18px 0' }}>{selectedCard.description}</p>
+          <ul style={{ marginTop: 10, textAlign: "left", paddingLeft: 0, listStyle: "none" }}>
             {selectedCard.questions.map((q, i) => (
-              <li key={i} style={{ marginBottom: 8 }}>{q}</li>
+              <li key={i} style={{ marginBottom: 10, background: "#f5f6fa", borderRadius: 8, padding: "8px 14px", color: "#333", fontSize: 16, boxShadow: "0 1px 4px #7F7FD511" }}>{q}</li>
             ))}
           </ul>
-          <button onClick={handleRestart} style={{ marginTop: 24, padding: "8px 20px", fontSize: 15, borderRadius: 8, background: "#eee", border: "none", cursor: "pointer" }}>
+          <button onClick={handleRestart} style={{ marginTop: 28, padding: "10px 28px", fontSize: 16, borderRadius: 10, background: "#eee", border: "none", cursor: "pointer", fontWeight: 500, color: "#7F7FD5", boxShadow: "0 2px 8px #7F7FD511" }}>
             Попробовать ещё раз
           </button>
         </div>
