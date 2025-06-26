@@ -138,18 +138,21 @@ function App() {
             {selectedCard.questions.map((q, i) => (
               <li key={i} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: 10, background: "#f5f6fa", borderRadius: 8, padding: "8px 14px", color: "#333", fontSize: 16, boxShadow: "0 1px 4px #7F7FD511" }}>
                 <span style={{
-                  minWidth: 28,
-                  height: 28,
+                  minWidth: 34,
+                  height: 34,
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   borderRadius: '50%',
                   background: '#edeaff',
-                  color: '#a18cd1',
+                  color: '#7F7FD5',
                   fontWeight: 700,
-                  fontSize: 16,
-                  marginRight: 12,
-                  marginTop: 1
+                  fontSize: 18,
+                  marginRight: 14,
+                  marginTop: 1,
+                  border: '1.5px solid #a18cd1',
+                  boxSizing: 'border-box',
+                  boxShadow: '0 1px 4px #a18cd122'
                 }}>{i + 1}</span>
                 <span>{q}</span>
               </li>
