@@ -139,11 +139,19 @@ function App() {
               <li key={i} style={{ marginBottom: 10, background: "#f5f6fa", borderRadius: 8, padding: "8px 14px", color: "#333", fontSize: 16, boxShadow: "0 1px 4px #7F7FD511" }}>{q}</li>
             ))}
           </ul>
+          {/* Первый блок: шаги и мотивация */}
           <div style={{ marginTop: 22, color: '#555', fontSize: 15, background: 'linear-gradient(135deg, #e3eaff 60%, #f8fafd 100%)', borderRadius: 14, padding: '16px 16px', boxShadow: '0 1px 8px #7F7FD522', textAlign: 'left', border: '2px solid #7F7FD5', fontWeight: 500 }}>
-            После ответа на вопросы <b>запиши 3 простых шага, которые ты сделаешь прямо сейчас для решения своей проблемы.</b><br/><br/>
-            Ведь что поменяется, если этого не менять?.. <br/><br/>
-            <span style={{ color: '#7F7FD5', fontWeight: 600 }}>Не получается до конца понять послание своего подсознания?<br/>
-            Хочется решить свой запрос максимально эффективно?</span><br/><br/>
+            После ответа на вопросы <b>запиши 3 простых шага, которые ты сделаешь прямо сейчас для решения своей проблемы.</b>
+            <div style={{ marginTop: 12, color: '#7F7FD5', fontStyle: 'italic', fontWeight: 600 }}>
+              Ведь что поменяется, если этого не менять?
+            </div>
+          </div>
+          {/* Второй блок: приглашение на консультацию */}
+          <div style={{ marginTop: 18, color: '#555', fontSize: 15, background: 'linear-gradient(135deg, #f8fafd 60%, #e3eaff 100%)', borderRadius: 14, padding: '16px 16px', boxShadow: '0 1px 8px #7F7FD522', textAlign: 'left', border: '2px dashed #7F7FD5', fontWeight: 500 }}>
+            <div style={{ color: '#7F7FD5', fontWeight: 600, marginBottom: 6 }}>
+              Не получается до конца понять послание своего подсознания?<br/>
+              Хочется решить свой запрос максимально эффективно?
+            </div>
             Оставь заявку и мы вместе найдем лучшее решение
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
               <a className="consult-btn" href="#consult" style={{
