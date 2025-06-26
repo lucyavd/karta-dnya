@@ -51,12 +51,47 @@ function App() {
       background: "linear-gradient(135deg, #7F7FD5 0%, #86A8E7 50%, #91EAE4 100%)",
       transition: "background 0.5s"
     }}>
+      <style>{`
+        @media (max-width: 600px) {
+          .card-container, .card-result {
+            padding: 16px !important;
+            border-radius: 14px !important;
+            max-width: 98vw !important;
+            box-shadow: 0 2px 12px #7F7FD522 !important;
+          }
+          .card-svg {
+            width: 70px !important;
+            height: 105px !important;
+            margin-bottom: 12px !important;
+          }
+          .card-number {
+            width: 70px !important;
+            height: 105px !important;
+            font-size: 28px !important;
+            border-radius: 12px !important;
+          }
+          .card-title {
+            font-size: 20px !important;
+            margin-top: 8px !important;
+          }
+          .card-desc {
+            font-size: 14px !important;
+          }
+          .card-questions {
+            font-size: 14px !important;
+          }
+          .consult-btn {
+            font-size: 14px !important;
+            padding: 10px 12px !important;
+          }
+        }
+      `}</style>
       {step === 1 && (
-        <div style={{ background: "rgba(255,255,255,0.85)", padding: 32, borderRadius: 24, boxShadow: "0 4px 24px #7F7FD533", maxWidth: 420, width: "100%", textAlign: "center", position: "relative" }}>
-          <div style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
+        <div className="card-container" style={{ background: "rgba(255,255,255,0.85)", padding: 32, borderRadius: 24, boxShadow: "0 4px 24px #7F7FD533", maxWidth: 420, width: "100%", textAlign: "center", position: "relative" }}>
+          <div className="card-svg" style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
             {cardBackSVG}
           </div>
-          <h2 style={{ fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 28, color: '#4f4f4f' }}>Карта дня</h2>
+          <h2 className="card-title" style={{ fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 28, color: '#4f4f4f' }}>Карта дня</h2>
           <p style={{ color: '#555', fontSize: 17 }}>Сделайте вдох и выдох, расслабьтесь.<br/>Сформулируйте свой вопрос и введите число от 1 до 50.</p>
           <form onSubmit={handleSubmit} style={{ marginTop: 24 }}>
             <input
@@ -76,8 +111,8 @@ function App() {
         </div>
       )}
       {step === 2 && selectedCard && (
-        <div style={{ background: "rgba(255,255,255,0.95)", padding: 36, borderRadius: 28, boxShadow: "0 6px 32px #7F7FD544", maxWidth: 440, width: "100%", textAlign: "center", position: "relative", animation: "fadeIn 0.7s" }}>
-          <div style={{
+        <div className="card-result" style={{ background: "rgba(255,255,255,0.95)", padding: 36, borderRadius: 28, boxShadow: "0 6px 32px #7F7FD544", maxWidth: 440, width: "100%", textAlign: "center", position: "relative", animation: "fadeIn 0.7s" }}>
+          <div className="card-number" style={{
             margin: "0 auto 18px auto",
             width: 120,
             height: 180,
@@ -96,17 +131,35 @@ function App() {
           }}>
             <span style={{ fontSize: 44, fontWeight: 700, color: "#7F7FD5", fontFamily: 'Georgia, serif' }}>{selectedCard.number}</span>
           </div>
-          <h2 style={{ fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 26, color: '#4f4f4f', marginTop: 12 }}>{selectedCard.title}</h2>
-          <p style={{ fontStyle: "italic", color: '#555', fontSize: 17, margin: '12px 0 18px 0' }}>{selectedCard.description}</p>
+          <h2 className="card-title" style={{ fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 26, color: '#4f4f4f', marginTop: 12 }}>{selectedCard.title}</h2>
+          <p className="card-desc" style={{ fontStyle: "italic", color: '#555', fontSize: 17, margin: '12px 0 18px 0' }}>{selectedCard.description}</p>
           <div style={{ margin: '18px 0 8px 0', fontWeight: 600, color: '#7F7FD5', fontSize: 17, letterSpacing: 0.2 }}>Вопросы для самостоятельного размышления:</div>
-          <ul style={{ marginTop: 10, textAlign: "left", paddingLeft: 0, listStyle: "none" }}>
+          <ul className="card-questions" style={{ marginTop: 10, textAlign: "left", paddingLeft: 0, listStyle: "none" }}>
             {selectedCard.questions.map((q, i) => (
               <li key={i} style={{ marginBottom: 10, background: "#f5f6fa", borderRadius: 8, padding: "8px 14px", color: "#333", fontSize: 16, boxShadow: "0 1px 4px #7F7FD511" }}>{q}</li>
             ))}
           </ul>
-          <div style={{ marginTop: 22, color: '#888', fontSize: 15, background: '#f8fafd', borderRadius: 10, padding: '14px 16px', boxShadow: '0 1px 6px #7F7FD511' }}>
-            Если вам сложно ответить на эти вопросы самостоятельно, не переживайте — иногда взгляд со стороны помогает увидеть больше.<br/>
-            <b>Вы можете записаться на консультацию, чтобы получить индивидуальную поддержку и разобраться в ситуации глубже.</b>
+          <div style={{ marginTop: 22, color: '#888', fontSize: 15, background: '#f8fafd', borderRadius: 10, padding: '14px 16px', boxShadow: '0 1px 6px #7F7FD511', textAlign: 'left' }}>
+            После ответа на вопросы <b>запиши 3 простых шага, которые ты сделаешь прямо сейчас для решения своей проблемы.</b><br/><br/>
+            Ведь что поменяется, если этого не менять?.. <br/><br/>
+            <span style={{ color: '#7F7FD5', fontWeight: 500 }}>Не получается до конца понять послание своего подсознания?<br/>
+            Хочется решить свой запрос максимально эффективно?</span><br/><br/>
+            Оставь заявку и мы вместе найдем лучшее решение
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
+              <a className="consult-btn" href="#consult" style={{
+                padding: '12px 28px',
+                background: 'linear-gradient(90deg, #7F7FD5, #86A8E7)',
+                color: '#fff',
+                borderRadius: 10,
+                fontWeight: 600,
+                fontSize: 16,
+                textDecoration: 'none',
+                boxShadow: '0 2px 8px #7F7FD522',
+                transition: 'background 0.2s',
+                border: 'none',
+                cursor: 'pointer'
+              }}>Записаться на консультацию</a>
+            </div>
           </div>
           <button onClick={handleRestart} style={{ marginTop: 28, padding: "10px 28px", fontSize: 16, borderRadius: 10, background: "#eee", border: "none", cursor: "pointer", fontWeight: 500, color: "#7F7FD5", boxShadow: "0 2px 8px #7F7FD511" }}>
             Попробовать ещё раз
