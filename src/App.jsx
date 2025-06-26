@@ -139,10 +139,10 @@ function App() {
               <li key={i} style={{ marginBottom: 10, background: "#f5f6fa", borderRadius: 8, padding: "8px 14px", color: "#333", fontSize: 16, boxShadow: "0 1px 4px #7F7FD511" }}>{q}</li>
             ))}
           </ul>
-          <div style={{ marginTop: 22, color: '#888', fontSize: 15, background: '#f8fafd', borderRadius: 10, padding: '14px 16px', boxShadow: '0 1px 6px #7F7FD511', textAlign: 'left' }}>
+          <div style={{ marginTop: 22, color: '#555', fontSize: 15, background: 'linear-gradient(135deg, #e3eaff 60%, #f8fafd 100%)', borderRadius: 14, padding: '16px 16px', boxShadow: '0 1px 8px #7F7FD522', textAlign: 'left', border: '2px solid #7F7FD5', fontWeight: 500 }}>
             После ответа на вопросы <b>запиши 3 простых шага, которые ты сделаешь прямо сейчас для решения своей проблемы.</b><br/><br/>
             Ведь что поменяется, если этого не менять?.. <br/><br/>
-            <span style={{ color: '#7F7FD5', fontWeight: 500 }}>Не получается до конца понять послание своего подсознания?<br/>
+            <span style={{ color: '#7F7FD5', fontWeight: 600 }}>Не получается до конца понять послание своего подсознания?<br/>
             Хочется решить свой запрос максимально эффективно?</span><br/><br/>
             Оставь заявку и мы вместе найдем лучшее решение
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
